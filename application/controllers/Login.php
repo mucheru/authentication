@@ -11,6 +11,7 @@ class Login extends CI_Controller{
         $this->load->helper('form');
         $this->load->helper('url');
         $this->load->library('form_validation');
+        $this->load->library('session');
 
     }
 
@@ -92,16 +93,28 @@ class Login extends CI_Controller{
             ),
             array(
                     'field' => 'Answerc',
-                    'label' => 'Answerc',
+                    'label' => 'AnswerC',
                     'rules' => 'required'
-            )
+            ),
+            array(
+                'field' => 'AnswerD',
+                'label' => 'AnswerD',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'Correct_Answer',
+                'label' => 'Correct_Answer',
+                'rules' => 'required'
+        )
     );
 
-    
+        
     
     $this->form_validation->set_rules($config);
     if($this->form_validation->run()!=False)
     {
+        //session_start();
+
         $question_content=array();
         $question_content['question']=$this->input->post('question');
         $question_content['AnswerA']=$this->input->post('AnswerA');
@@ -110,7 +123,26 @@ class Login extends CI_Controller{
         $question_content['AnswerD']=$this->input->post('AnswerD');
         $question_content['Correct_Answer']=$this->input->post('Correct_Answer');
         $this->user_model->inserteducation_content($question_content);
-        
+
+        $validate_answer=$question_content['Correct_Answer'];
+        $AnswerA=$question_content['AnswerA'];
+        $AnswerB=$question_content['AnswerB'];
+        $Answerc=$question_content['Answerc'];
+        $AnswerD=$question_content['AnswerD'];
+
+        $mystring = implode(array($AnswerA,$AnswerB,$Answerc,$AnswerD));
+        $findme   = $validate_answer;
+        $pos = strpbrk($mystring, $findme);
+
+        if ($pos === false) {
+            echo "The string '$findme' was not found in the string '$mystring'";
+        } else {
+            echo "The string '$findme' was found in the string '$mystring'";
+            echo " and exists at position $pos";
+        }
+
+
+    
         
 
     }else{

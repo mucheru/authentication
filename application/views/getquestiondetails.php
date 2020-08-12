@@ -14,14 +14,17 @@ th, td {
 </head>
 <body>
 
-<h2>Table Caption</h2>
-<p>To add a caption to a table, use the caption tag.</p>
+<h2>Question and Answer tables</h2>
 
 <table style="width:100%">
-  <caption>Monthly savings</caption>
+  <caption>Questions and answer</caption>
   <tr>
-    <th>Month</th>
-    <th>Savings</th>
+    <th>Questions</th>
+    <th>Answers A</th>
+    <th>Answers B</th>
+    <th>Answers C</th>
+    <th>Answers D</th>
+    <th>Correct Answer</th>
   </tr>
   <tr>
     <td> <?php
@@ -29,23 +32,22 @@ th, td {
 foreach ($educationcontent as $show):
     ?>
       <tr>
-
         <td><?php echo $show->question?></td>
+        <td><?php echo $show->AnswerA?></td>
+        <td><?php echo $show->AnswerB?></td>
+        <td><?php echo $show->Answerc?></td>
+        <td><?php echo $show->AnswerD?></td>
+        <td><?php echo $show->Correct_Answer?></td>
       </tr>
+  
 
     <?php
 
 endforeach;
 ?>
-    
-    
-    
-    <td>$100</td>
-  </tr>
-  <tr>
-    <td>February</td>
-    <td>$50</td>
-  </tr>
+       
+   
+
 </table>
 
 </body>
