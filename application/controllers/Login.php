@@ -162,17 +162,13 @@ class Login extends CI_Controller{
   
     
     $this->load->view('exampage',$data);
-    //$this->load->view('exam',$data);
 
     }
-
     public function getresults(){
-
-        if(isset($_GET['submit'])){
-            //$answer = explode('&', $_SERVER['QUERY_STRING']);
-            if(!empty($_GET(implode('answer')))){
+        if(isset($_GET['answer'])){
+            if(!empty($_GET['answer'])){
                 foreach($_GET['answer'] as $selected){
-                    echo  $selected."</br>";
+                echo  $selected."</br>";
             }
 
 

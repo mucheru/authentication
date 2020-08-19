@@ -25,13 +25,13 @@ $(document).ready(function(){
 
 <input type="hidden" value="check" class=<?php $exam->id?> id=<?php $exam->id ?>>
 <?php echo($exam->question); ?><br>
-<input type="checkbox" class="check" id="AnswerA" name="answer[<?php $exam->id;?>]" value="<?php echo($exam->AnswerA);?>">
+<input type="checkbox" class="check"  name="answer[]" value="<?php echo($exam->AnswerA);?>">
 <?php echo($exam->AnswerA); ?><br>
-<input type="checkbox" class="check" id="AnswerB" name="answer[<?php $exam->id;?>]" value="<?php echo ($exam->AnswerB);?>">
+<input type="checkbox" class="check"  name="answer[]" value="<?php echo ($exam->AnswerB);?>">
 <?php echo($exam->AnswerB); ?><br>
-<input type="checkbox" class="check" id="Answerc" name="answer[<?php $exam->id;?>]" value="<?php echo ($exam->Answerc);?>">
+<input type="checkbox" class="check"  name="answer[]" value="<?php echo ($exam->Answerc);?>">
 <?php echo($exam->Answerc); ?><br>
-<input type="checkbox" class="check" id="AnswerD" name="answer[<?php $exam->id;?>]" value="<?php echo($exam->AnswerD);?>">
+<input type="checkbox" class="check"  name="answer[]" value="<?php echo($exam->AnswerD);?>">
 <?php echo($exam->AnswerD); ?><br>
 
 <?php endforeach?>
