@@ -14,10 +14,10 @@ th, td {
 </head>
 <body>
 
-<h2>Question and Answer tables</h2>
+<h2>Question and Answer tables administration view</h2>
 
 <table style="width:100%">
-  <caption>Questions and answer</caption>
+  <caption>The admin can create question and answers</caption>
   <tr>
     <th>Questions</th>
     <th>Answers A</th>

@@ -122,7 +122,6 @@ class Login extends CI_Controller{
         $question_content['Answerc']=$this->input->post('Answerc');
         $question_content['AnswerD']=$this->input->post('AnswerD');
         $question_content['Correct_Answer']=$this->input->post('Correct_Answer');
-        $this->user_model->inserteducation_content($question_content);
 
         $validate_answer=$question_content['Correct_Answer'];
         $AnswerA=$question_content['AnswerA'];
@@ -136,14 +135,16 @@ class Login extends CI_Controller{
 
         if ($pos === false) {
             echo "The string '$findme' was not found in the string '$mystring'";
+            echo('failed to insert!!,answer does not match any of the options given');
         } else {
             echo "The string '$findme' was found in the string '$mystring'";
-            echo " and exists at position $pos";
-        }
+            echo " and exists at position $pos";            
+            $this->user_model->inserteducation_content($question_content);
+            echo ("data inserted");
+            $this->load->view('getloginreport');
 
 
-    
-        
+        }        
 
     }else{
         $this->load->view('getloginreport');
@@ -155,8 +156,34 @@ class Login extends CI_Controller{
 
     }
 
+    public function exampage(){
+
+    $data['educationcontent']=$this->user_model->getquestiondetails();
+  
+    
+    $this->load->view('exampage',$data);
+    //$this->load->view('exam',$data);
+
+    }
+
+    public function getresults(){
+
+        if(isset($_GET['submit'])){
+            //$answer = explode('&', $_SERVER['QUERY_STRING']);
+            if(!empty($_GET(implode('answer')))){
+                foreach($_GET['answer'] as $selected){
+                    echo  $selected."</br>";
+            }
+
+
+        }else{
+            echo("no data");
+        }
+
+    }
+
 
 
 }
-
+}
 ?>
